@@ -1,3 +1,8 @@
+/**
+    MYSQL: "INTEGER AUTO_INCREMENT PRIMARY KEY"
+    POSTGRES "id serial primary key"
+*/
+
 CREATE TABLE aluno(
 	id INTEGER AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
