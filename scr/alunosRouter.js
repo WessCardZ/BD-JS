@@ -1,5 +1,7 @@
 const express = require('express');
 
+const Aluno = require('./alunoModel')
+
 const router = express.Router();
 router.use(express.json());
 
