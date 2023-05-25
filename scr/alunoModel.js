@@ -1,5 +1,6 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes, NOW } = require('sequelize');
 const db = require('./db');
+const { now } = require('sequelize/types/utils');
 
 const Aluno = db.define('aluno', {
     id: {
@@ -23,7 +24,7 @@ const Aluno = db.define('aluno', {
         defaultValue: 0
     }
 }, {
-
+    tableName: 'aluno'
 });
 
 module.exports = Aluno;
