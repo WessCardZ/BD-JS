@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes, NOW } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const db = require('./db');
-const { now } = require('sequelize/types/utils');
 
 const Aluno = db.define('aluno', {
     id: {
