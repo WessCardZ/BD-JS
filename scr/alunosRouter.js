@@ -6,6 +6,7 @@ const router = express.Router();
 router.use(express.json());
 
 router.get('/', (req, res) => {
+
     res.send(`GET ALL`)
 })
 
@@ -21,8 +22,10 @@ router.put('/:id', (req, res) => {//atualizar
     res.send(`PUT: ${JSON.stringify(req.body)}`)
 })
 
-router.post('/', (req, res) => {//salvar
-    res.send(`POST: ${JSON.stringify(req.body)}`)
+router.post('/', async (req, res) => {//salvar
+    const aluno = await Aluno.create(req.body);
+
+    res.send(`POST: ${JSON.stringify(aluno)}`)
 })
 
 router.delete('/:id', (req, res) => {//delete
