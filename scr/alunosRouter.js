@@ -5,28 +5,34 @@ const Aluno = require('./alunoModel')
 const router = express.Router();
 router.use(express.json());
 
-router.get('/', (req, res) => {
-
-    res.send(`GET ALL`)
+router.get('/', async (req, res) => {
+    const alunos = await Aluno.findAll();
+    res.send(alunos)
 })
 
-router.get('/:id', (req, res) => {
-    res.send(`GET ID: ${req.params.id}`)
+router.get('/:id', async (req, res) => {
+    const aluno = await Aluno.findByPk(req.params.id);
+    res.send(aluno)
 })
 
-router.get('/matricula/:matricula', (req, res) => {
-    res.send(`GET Matricula: ${req.params.matricula}`)
+router.get('/matricula/:matricula', async (req, res) => {
+    const aluno = await Aluno.findOne({
+        where: {
+            matricula: req.params.matricula
+        }
+    })
+    res.send(aluno)
+})
+router.post('/', async (req, res) => {//salvar
+    const aluno = await Aluno.create(req.body);
+    res.send(aluno)
 })
 
 router.put('/:id', (req, res) => {//atualizar
-    res.send(`PUT: ${JSON.stringify(req.body)}`)
+    const aluno = Aluno.create(JSON.parse(req.body));
+    res.send(aluno);
 })
 
-router.post('/', async (req, res) => {//salvar
-    const aluno = await Aluno.create(req.body);
-
-    res.send(`POST: ${JSON.stringify(aluno)}`)
-})
 
 router.delete('/:id', (req, res) => {//delete
     res.send(`DELETE: ${req.params.id}`)
