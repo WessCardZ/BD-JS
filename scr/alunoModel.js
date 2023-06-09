@@ -1,6 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('./db');
 
+const Atividade = require('./atividadeModel')
+
 const Aluno = db.define('aluno', {
     id: {
         type: DataTypes.INTEGER,
@@ -24,6 +26,12 @@ const Aluno = db.define('aluno', {
     }
 }, {
     tableName: 'aluno'
+});
+
+Aluno.hasMany(Atividade, { as: 'atividades', foreignKey: 'aluno_id' });
+Atividade.belongsTo(Aluno, {
+    as: 'aluno',
+    foreignKey: 'aluno_id'
 });
 
 module.exports = Aluno;
