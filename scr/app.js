@@ -12,7 +12,7 @@ app.use('/alunos', alunoRouter)
 //     res.send('Bom dia!');
 // })
 
-app.listen(process.env.PORT, async () => {
+app.listen(3000, async () => {
     const resultDb = await database.sync({ alter: true })
     // console.log(resultDb)
     console.log('server started')
